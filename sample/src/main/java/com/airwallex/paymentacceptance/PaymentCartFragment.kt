@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
-import androidx.lifecycle.lifecycleScope
 import com.airwallex.android.*
 import com.airwallex.android.exception.RedirectException
 import com.airwallex.android.model.*
@@ -214,7 +213,7 @@ class PaymentCartFragment : BasePaymentCartFragment() {
     }
 
     private fun startRecurringFlow() {
-        viewLifecycleOwner.lifecycleScope.safeLaunch(Dispatchers.Main) {
+        GlobalScope.safeLaunch(Dispatchers.Main) {
             (activity as? PaymentCartActivity)?.setLoadingProgress(true)
             val customerId = withContext(Dispatchers.IO) {
                 val response = api.authentication(
@@ -286,7 +285,7 @@ class PaymentCartFragment : BasePaymentCartFragment() {
     private fun authAndCreatePaymentIntent() {
         (activity as? PaymentCartActivity)?.setLoadingProgress(true)
         Settings.token = null
-        viewLifecycleOwner.lifecycleScope.safeLaunch(Dispatchers.IO) {
+        GlobalScope.safeLaunch(Dispatchers.IO) {
             val response = api.authentication(
                 apiKey = Settings.apiKey,
                 clientId = Settings.clientId

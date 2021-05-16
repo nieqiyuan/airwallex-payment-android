@@ -4,12 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.airwallex.android.*
-import com.airwallex.android.ClientSecretRepository
 import com.airwallex.android.databinding.ActivityPaymentMethodsBinding
 import com.airwallex.android.model.*
 import java.util.concurrent.atomic.AtomicInteger

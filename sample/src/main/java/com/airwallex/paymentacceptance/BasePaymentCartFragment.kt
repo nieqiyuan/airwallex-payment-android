@@ -1,6 +1,6 @@
 package com.airwallex.paymentacceptance
 
-import androidx.fragment.app.Fragment
+import android.support.v4.app.Fragment
 import com.airwallex.android.*
 import com.airwallex.android.exception.InvalidParamsException
 import com.airwallex.android.model.*

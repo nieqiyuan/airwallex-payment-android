@@ -2,12 +2,13 @@ package com.airwallex.paymentacceptance
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.InputType
-import android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
-import android.widget.Toast
-import androidx.preference.*
-import com.airwallex.android.AirwallexCheckoutMode
 import java.util.*
+import android.support.v7.preference.ListPreference
+import android.support.v7.preference.Preference
+import android.support.v7.preference.PreferenceFragmentCompat
+import android.support.v7.preference.PreferenceManager
+import android.widget.Toast
+import com.airwallex.android.AirwallexCheckoutMode
 
 class PaymentSettingsFragment :
     PreferenceFragmentCompat(),
@@ -17,12 +18,12 @@ class PaymentSettingsFragment :
         addPreferencesFromResource(R.xml.settings)
 
         val preferences = preferenceManager.sharedPreferences
-        (findPreference<Preference>(getString(R.string.price)) as? EditTextPreference)?.setOnBindEditTextListener { editText ->
+        /*(findPreference<Preference>(getString(R.string.price)) as? EditTextPreference)?.setOnBindEditTextListener { editText ->
             editText.inputType = InputType.TYPE_CLASS_NUMBER or TYPE_NUMBER_FLAG_DECIMAL
         }
         (findPreference<Preference>(getString(R.string.currency)) as? EditTextPreference)?.setOnBindEditTextListener { editText ->
             editText.inputType = InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
-        }
+        }*/
 
         val sdkEnvPref: ListPreference? =
             findPreference(getString(R.string.sdk_env_id)) as? ListPreference?
@@ -78,7 +79,7 @@ class PaymentSettingsFragment :
         if (key == null) {
             return
         }
-        val preference = findPreference<Preference>(key)
+        val preference = findPreference(key)
         when (key) {
             getString(R.string.base_url) -> preference?.summary = Settings.baseUrl
             getString(R.string.api_key) -> preference?.summary = Settings.apiKey

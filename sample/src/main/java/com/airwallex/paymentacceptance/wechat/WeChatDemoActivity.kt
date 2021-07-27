@@ -3,11 +3,10 @@ package com.airwallex.paymentacceptance.wechat
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.airwallex.android.model.WeChat
-import com.airwallex.android.setOnSingleClickListener
 import com.airwallex.paymentacceptance.R
 import com.airwallex.paymentacceptance.Settings
 import com.airwallex.paymentacceptance.WXPay
@@ -32,36 +31,36 @@ class WeChatDemoActivity : AppCompatActivity() {
         viewBinding.partnerId.setText("353449704")
         viewBinding.packageStr.setText("Sign=WXPay")
 
-        viewBinding.buttonNext.setOnSingleClickListener {
+        viewBinding.buttonNext.setOnClickListener {
 
             if (viewBinding.partnerId.text.toString().isEmpty()) {
                 showPaymentError("Missing PartnerId")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             if (viewBinding.prepayId.text.toString().isEmpty()) {
                 showPaymentError("Missing PrepayId")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             if (viewBinding.packageStr.text.toString().isEmpty()) {
                 showPaymentError("Missing Package")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             if (viewBinding.nonceStr.text.toString().isEmpty()) {
                 showPaymentError("Missing NonceStr")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             if (viewBinding.timestamp.text.toString().isEmpty()) {
                 showPaymentError("Missing Timestamp")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             if (viewBinding.sign.text.toString().isEmpty()) {
                 showPaymentError("Missing Sign")
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             val weChat = WeChat(

@@ -2,10 +2,9 @@ package com.airwallex.paymentacceptance.h5
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
-import com.airwallex.android.setOnSingleClickListener
 import com.airwallex.paymentacceptance.R
 import com.airwallex.paymentacceptance.databinding.ActivityH5DemoBinding
 
@@ -23,19 +22,19 @@ class H5DemoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setTitle(R.string.h5demo)
 
-        viewBinding.buttonFirst.setOnSingleClickListener {
+        viewBinding.buttonFirst.setOnClickListener {
             val url = viewBinding.airwallexUrl.text.toString()
             if (url.isEmpty()) {
                 Toast.makeText(this, "Url should not be empty!", Toast.LENGTH_SHORT)
                     .show()
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             val referer = viewBinding.refererUrl.text.toString()
             if (referer.isEmpty()) {
                 Toast.makeText(this, "Referer should not be empty!", Toast.LENGTH_SHORT)
                     .show()
-                return@setOnSingleClickListener
+                return@setOnClickListener
             }
 
             val intent = Intent(this, H5WebViewActivity::class.java)
